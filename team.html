@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | TechInnovate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --gray: #95a5a6;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header - Same as previous */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Team Hero */
+        .team-hero {
+            padding: 180px 0 80px;
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .team-hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+        }
+
+        /* Leadership Team */
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .leader-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .leader-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .leader-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: var(--secondary);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .leader-info h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .leader-title {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .leader-bio {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .leader-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .leader-social a {
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .leader-social a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Department Teams */
+        .department-section {
+            margin-bottom: 5rem;
+        }
+
+        .department-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .department-header h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .department-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .member-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--light);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        .member-info h4 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 100px 0;
+            background: var(--light);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .value-card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Footer - Same as previous */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p {
+            margin-bottom: 1rem;
+            color: #bdc3c7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .team-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .leadership-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-rocket"></i>
+                TechInnovate
+            </a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="team-hero">
+        <div class="container">
+            <h1>Meet Our Expert Team</h1>
+            <p>Passionate professionals driving innovation forward</p>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Leadership Team</h2>
+            
+            <div class="leadership-grid">
+                <div class="leader-card">
+                    <div class="leader-avatar">
+                        AJ
+                    </div>
+                    <div class="leader-info">
+                        <h3>Alex Johnson</h3>
+                        <div class="leader-title">Chief Executive Officer</div>
+                        <p class="leader-bio">Former Google engineering director with 15+ years in tech leadership. Alex founded TechInnovate with a vision to make cutting-edge technology accessible to businesses of all sizes.</p>
+                        <div class="leader-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leader-card">
+                    <div class="leader-avatar">
+                        SM
+                    </div>
+                    <div class="leader-info">
+                        <h3>Sarah Martinez</h3>
+                        <div class="leader-title">Chief Technology Officer</div>
+                        <p class="leader-bio">PhD in Computer Science from MIT, specializing in distributed systems. Sarah leads our technical strategy and ensures our solutions remain at the forefront of technological innovation.</p>
+                        <div class="leader-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leader-card">
+                    <div class="leader-avatar">
+                        DC
+                    </div>
+                    <div class="leader-info">
+                        <h3>David Chen</h3>
+                        <div class="leader-title">Chief Operations Officer</div>
+                        <p class="leader-bio">Previously COO at a Fortune 500 company, David brings extensive experience in scaling operations and ensuring exceptional service delivery across global markets.</p>
+                        <div class="leader-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="department-section">
+                <div class="department-header">
+                    <h3>Engineering Department</h3>
+                    <p>Our team of 100+ engineers building innovative solutions</p>
+                </div>
+                <div class="department-grid" id="engineeringTeam">
+                    <!-- Engineering team members will be loaded dynamically -->
+                </div>
+            </div>
+
+            <div class="department-section">
+                <div class="department-header">
+                    <h3>Design & UX Team</h3>
+                    <p>Crafting exceptional user experiences and beautiful interfaces</p>
+                </div>
+                <div class="department-grid" id="designTeam">
+                    <!-- Design team members will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">Our Team Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4>Innovation First</h4>
+                    <p>We constantly challenge the status quo and explore new technologies to deliver cutting-edge solutions that give our clients a competitive edge.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h4>Collaborative Spirit</h4>
+                    <p>We believe the best solutions emerge from diverse perspectives. Cross-functional collaboration is at the heart of everything we do.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4>Continuous Learning</h4>
+                    <p>Technology evolves rapidly, and so do we. Our team dedicates 20% of their time to learning, research, and professional development.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4>Client Success</h4>
+                    <p>We measure our success by the value we create for our clients. Every project is approached with deep commitment to achieving client goals.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TechInnovate</h3>
+                    <p>Leading the digital transformation revolution since 2012. We bridge the gap between innovative ideas and technological implementation.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="index.html" style="color: #bdc3c7; text-decoration: none;">Home</a></p>
+                    <p><a href="about.html" style="color: #bdc3c7; text-decoration: none;">About Us</a></p>
+                    <p><a href="services.html" style="color: #bdc3c7; text-decoration: none;">Services</a></p>
+                    <p><a href="portfolio.html" style="color: #bdc3c7; text-decoration: none;">Portfolio</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Innovation Drive, Tech City</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@techinnovate.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 TechInnovate. All rights reserved. | Digital Transformation Specialists</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Team Data
+        const engineeringTeam = [
+            { name: "Michael Rodriguez", role: "Lead Software Architect", initials: "MR" },
+            { name: "Jennifer Park", role: "Senior Full-Stack Developer", initials: "JP" },
+            { name: "Robert Kim", role: "DevOps Engineer", initials: "RK" },
+            { name: "Lisa Wang", role: "AI/ML Specialist", initials: "LW" },
+            { name: "Thomas Anderson", role: "Cloud Solutions Architect", initials: "TA" },
+            { name: "Maria Garcia", role: "Backend Developer", initials: "MG" }
+        ];
+
+        const designTeam = [
+            { name: "Emma Wilson", role: "Lead UX Designer", initials: "EW" },
+            { name: "James Thompson", role: "UI/UX Designer", initials: "JT" },
+            { name: "Sophie Martin", role: "Product Designer", initials: "SM" },
+            { name: "Kevin Brown", role: "Interaction Designer", initials: "KB" }
+        ];
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav ul');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Initialize Teams
+        function initTeams() {
+            renderTeam('engineeringTeam', engineeringTeam);
+            renderTeam('designTeam', designTeam);
+        }
+
+        function renderTeam(teamId, teamMembers) {
+            const teamContainer = document.getElementById(teamId);
+            teamContainer.innerHTML = '';
+            
+            teamMembers.forEach(member => {
+                const memberCard = document.createElement('div');
+                memberCard.className = 'member-card';
+                
+                memberCard.innerHTML = `
+                    <div class="member-avatar">
+                        ${member.initials}
+                    </div>
+                    <div class="member-info">
+                        <h4>${member.name}</h4>
+                        <div class="member-role">${member.role}</div>
+                    </div>
+                `;
+                
+                teamContainer.appendChild(memberCard);
+            });
+            
+            // Add animation to team members
+            animateTeamMembers(teamContainer);
+        }
+
+        function animateTeamMembers(container) {
+            const members = container.querySelectorAll('.member-card');
+            members.forEach((member, index) => {
+                member.style.opacity = '0';
+                member.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    member.style.transition = 'all 0.5s ease';
+                    member.style.opacity = '1';
+                    member.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        }
+
+        // Leader card hover effects
+        function initLeaderCards() {
+            const leaderCards = document.querySelectorAll('.leader-card');
+            
+            leaderCards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    const avatar = card.querySelector('.leader-avatar');
+                    avatar.style.transform = 'scale(1.1)';
+                    avatar.style.transition = 'transform 0.3s ease';
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    const avatar = card.querySelector('.leader-avatar');
+                    avatar.style.transform = 'scale(1)';
+                });
+            });
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initTeams();
+            initLeaderCards();
+            
+            // Add scroll animation for value cards
+            const valueCards = document.querySelectorAll('.value-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if(entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 200);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            valueCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
