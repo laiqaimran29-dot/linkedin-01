@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | TechInnovate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --gray: #95a5a6;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header - Same as previous */
+        header {
+            background: var(--primary);
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Contact Hero */
+        .contact-hero {
+            padding: 180px 0 80px;
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--light);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .submit-btn:disabled {
+            background: var(--gray);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            padding: 1rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .info-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .info-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .info-content p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 0 0 100px;
+            background: white;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 100px 0;
+            background: var(--light);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f8f9fa;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: #666;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        /* Message Status */
+        .message-status {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: none;
+        }
+
+        .message-status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .message-status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        /* Footer - Same as previous */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p {
+            margin-bottom: 1rem;
+            color: #bdc3c7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #34495e;
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary);
+                flex-direction: column;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-form {
+                padding: 2rem;
+            }
+
+            .map-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-rocket"></i>
+                TechInnovate
+            </a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Get In Touch</h1>
+            <p>Let's discuss how we can transform your business together</p>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            
+            <div class="contact-content">
+                <div class="contact-form">
+                    <div id="messageStatus" class="message-status"></div>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Service Interest</label>
+                            <select id="service" class="form-control">
+                                <option value="">Select a service</option>
+                                <option value="software">Custom Software Development</option>
+                                <option value="ai">AI & Machine Learning</option>
+                                <option value="cloud">Cloud Transformation</option>
+                                <option value="security">Cybersecurity Services</option>
+                                <option value="analytics">Data Analytics & BI</option>
+                                <option value="design">Digital Experience</option>
+                                <option value="consulting">Technology Consulting</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Project Details *</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn" id="submitBtn">
+                            <span id="btnText">Send Message</span>
+                            <div id="btnLoader" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i> Sending...
+                            </div>
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="contact-info">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Our Headquarters</h3>
+                            <p>123 Innovation Drive<br>Tech City, TC 94107<br>United States</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Phone & Email</h3>
+                            <p>
+                                <strong>General Inquiries:</strong> +1 (555) 123-4567<br>
+                                <strong>Support:</strong> support@techinnovate.com<br>
+                                <strong>Business:</strong> business@techinnovate.com
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Business Hours</h3>
+                            <p>
+                                <strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM PST<br>
+                                <strong>Saturday:</strong> 10:00 AM - 4:00 PM PST<br>
+                                <strong>Sunday:</strong> Closed
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="info-content">
+                            <h3>Emergency Support</h3>
+                            <p>For critical system issues, our 24/7 emergency support line is available at <strong>+1 (555) 987-6543</strong>. This line is monitored around the clock for urgent matters requiring immediate attention.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <div class="container">
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container" id="faqContainer">
+                <!-- FAQ items will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TechInnovate</h3>
+                    <p>Leading the digital transformation revolution since 2012. We bridge the gap between innovative ideas and technological implementation.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="index.html" style="color: #bdc3c7; text-decoration: none;">Home</a></p>
+                    <p><a href="about.html" style="color: #bdc3c7; text-decoration: none;">About Us</a></p>
+                    <p><a href="services.html" style="color: #bdc3c7; text-decoration: none;">Services</a></p>
+                    <p><a href="portfolio.html" style="color: #bdc3c7; text-decoration: none;">Portfolio</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Innovation Drive, Tech City</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@techinnovate.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 TechInnovate. All rights reserved. | Digital Transformation Specialists</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Data
+        const faqData = [
+            {
+                question: "What is your typical project timeline?",
+                answer: "Project timelines vary based on scope and complexity. Small projects (websites, basic apps) typically take 4-8 weeks. Medium projects (enterprise applications) take 3-6 months. Large-scale digital transformations can take 6-12+ months. We provide detailed timelines during the discovery phase."
+            },
+            {
+                question: "Do you work with startups or only established companies?",
+                answer: "We work with businesses of all sizes, from ambitious startups to Fortune 500 companies. For startups, we offer specialized packages including MVP development, tech stack consultation, and scalable architecture planning to support growth phases."
+            },
+            {
+                question: "What industries do you specialize in?",
+                answer: "We have extensive experience across multiple industries including healthcare, finance, e-commerce, education, logistics, and manufacturing. Our cross-industry expertise allows us to bring innovative solutions from one sector to another, creating unique competitive advantages."
+            },
+            {
+                question: "How do you ensure project security and confidentiality?",
+                answer: "We implement multiple security layers: NDAs for all projects, secure development environments, encrypted communications, regular security audits, and compliance with industry standards (GDPR, HIPAA, PCI-DSS). All team members undergo security training and background checks."
+            },
+            {
+                question: "What is your pricing model?",
+                answer: "We offer flexible pricing: Fixed-price for well-defined projects, Time & Materials for agile development, and Retainer models for ongoing support. We provide detailed proposals with transparent breakdowns and can work within various budget constraints while maintaining quality."
+            },
+            {
+                question: "Do you provide post-launch support?",
+                answer: "Yes, we offer comprehensive post-launch support including maintenance packages, performance monitoring, security updates, feature enhancements, and 24/7 emergency support. Our typical support agreement includes regular updates, security patches, and performance optimization."
+            }
+        ];
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('nav ul');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Initialize Google Maps
+        function initMap() {
+            // For demonstration, we'll use a placeholder
+            const mapElement = document.getElementById('map');
+            mapElement.innerHTML = `
+                <div style="width:100%;height:100%;background:var(--light);display:flex;align-items:center;justify-content:center;color:var(--primary);">
+                    <div style="text-align:center;padding:2rem;">
+                        <i class="fas fa-map-marked-alt" style="font-size:3rem;margin-bottom:1rem;"></i>
+                        <h3 style="font-family:'Montserrat',sans-serif;margin-bottom:1rem;">Our Location</h3>
+                        <p>123 Innovation Drive, Tech City</p>
+                        <p>Interactive map would be integrated here with Google Maps API</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize FAQ
+        function initFAQ() {
+            const faqContainer = document.getElementById('faqContainer');
+            
+            faqData.forEach((item, index) => {
+                const faqItem = document.createElement('div');
+                faqItem.className = 'faq-item';
+                faqItem.innerHTML = `
+                    <div class="faq-question">
+                        <span>${item.question}</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>${item.answer}</p>
+                    </div>
+                `;
+                
+                faqItem.addEventListener('click', () => {
+                    faqItem.classList.toggle('active');
+                });
+                
+                faqContainer.appendChild(faqItem);
+            });
+        }
+
+        // Form Submission Handler
+        function initContactForm() {
+            const contactForm = document.getElementById('contactForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnLoader = document.getElementById('btnLoader');
+            const messageStatus = document.getElementById('messageStatus');
+            
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    company: document.getElementById('company').value,
+                    service: document.getElementById('service').value,
+                    message: document.getElementById('message').value,
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Validate form
+                if (!formData.name || !formData.email || !formData.message) {
+                    showMessage('Please fill in all required fields.', 'error');
+                    return;
+                }
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                btnText.style.display = 'none';
+                btnLoader.style.display = 'block';
+                
+                try {
+                    // Simulate API call
+                    await simulateAPICall(formData);
+                    
+                    // Show success message
+                    showMessage('Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.', 'success');
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Save to localStorage for demo purposes
+                    saveContactToStorage(formData);
+                    
+                } catch (error) {
+                    showMessage('Sorry, there was an error sending your message. Please try again later.', 'error');
+                } finally {
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    btnText.style.display = 'block';
+                    btnLoader.style.display = 'none';
+                }
+            });
+            
+            // Form validation on input
+            const formInputs = contactForm.querySelectorAll('input, textarea, select');
+            formInputs.forEach(input => {
+                input.addEventListener('input', () => {
+                    validateField(input);
+                });
+                
+                input.addEventListener('blur', () => {
+                    validateField(input);
+                });
+            });
+        }
+        
+        function validateField(field) {
+            if (field.hasAttribute('required') && !field.value.trim()) {
+                field.style.borderColor = 'var(--accent)';
+                field.style.boxShadow = '0 0 0 3px rgba(231, 76, 60, 0.2)';
+            } else {
+                field.style.borderColor = '#ddd';
+                field.style.boxShadow = 'none';
+                
+                if (field.type === 'email' && field.value) {
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(field.value)) {
+                        field.style.borderColor = 'var(--accent)';
+                        field.style.boxShadow = '0 0 0 3px rgba(231, 76, 60, 0.2)';
+                    }
+                }
+            }
+        }
+        
+        function showMessage(text, type) {
+            const messageStatus = document.getElementById('messageStatus');
+            messageStatus.textContent = text;
+            messageStatus.className = `message-status ${type}`;
+            
+            // Auto-hide message after 5 seconds
+            setTimeout(() => {
+                messageStatus.style.opacity = '0';
+                setTimeout(() => {
+                    messageStatus.className = 'message-status';
+                    messageStatus.style.opacity = '1';
+                }, 300);
+            }, 5000);
+        }
+        
+        function simulateAPICall(data) {
+            return new Promise((resolve, reject) => {
+                // Simulate network delay
+                setTimeout(() => {
+                    // 90% success rate for demo
+                    Math.random() > 0.1 ? resolve() : reject();
+                }, 1500);
+            });
+        }
+        
+        function saveContactToStorage(data) {
+            // Get existing contacts or initialize empty array
+            const contacts = JSON.parse(localStorage.getItem('techinnovateContacts') || '[]');
+            
+            // Add new contact
+            contacts.push({
+                ...data,
+                id: Date.now(),
+                status: 'new'
+            });
+            
+            // Save back to localStorage
+            localStorage.setItem('techinnovateContacts', JSON.stringify(contacts));
+            
+            console.log('Contact saved to localStorage:', data);
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initMap();
+            initFAQ();
+            initContactForm();
+            
+            // Add animation to contact form
+            const contactForm = document.querySelector('.contact-form');
+            const contactInfo = document.querySelector('.contact-info');
+            
+            [contactForm, contactInfo].forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    element.style.transition = 'all 0.6s ease';
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 300);
+            });
+            
+            // Add animation to FAQ items
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    item.style.transition = 'all 0.5s ease';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
